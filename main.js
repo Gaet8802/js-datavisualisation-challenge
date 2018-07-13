@@ -89,8 +89,61 @@ let cells = rows[i].getElementsByTagName("td");
       var x = myChart.addCategoryAxis("x", ["years", "pays"]);
       x.addOrderRule("years", false);
       var y = myChart.addMeasureAxis("y", "data");
-      y.ticks = 15;
-      
+      y.ticks = 15;      
       myChart.addSeries("pays", dimple.plot.bar);
       myChart.addLegend(10, 10, "100%", 200);
       myChart.draw();
+
+      // end of table 2
+
+      var dataTableAjax = [];
+      var requestAjax = new XMLHttpRequest();
+
+      var container3 = document.createElement('div');
+      var tabldiv3 = document.getElementById('bodyContent');
+      var tabl3parent = document.getElementById('content');
+      var myChart
+
+      tabl3parent.insertBefore(container3,tabldiv3);
+
+
+      requestAjax.open('GET',"https://inside.becode.org/api/v1/data/random.json");
+      requestAjax.onload = function(){
+      dataAjax = JSON.parse(requestAjax.responsetext); 
+      
+      for(i = 0;i < dataAjax.length;i++){
+        dataTableAjax.push({"x":dataAjax[i][0],
+        "y":parseInt(dataAjax[i][1])
+});
+var svg = dimple.newSvg(container3, '100%', 400);
+myChart = new dimple.chart(svg, dataTableAjax);
+myChart.setBounds(30, 95, '80%', 270);
+myChart.addCategoryAxis("x", "x");
+myChart.addMeasureAxis("y", "y");
+
+myChart.addSeries(null, dimple.plot.bar);
+myChart.addLegend(10, 10, '90%', 200);
+myChart.draw();
+updatechart();
+      }
+      
+     
+}
+requestAjax.send();
+
+function updatechart(){
+        requestAjax.open('GET',"https://inside.becode.org/api/v1/data/random.json");
+        requestAjax.onload = function(){
+        dataAjax = JSON.parse(requestAjax, responseText); 
+        
+        for(i = 0; dataAjax.length;i++){
+          dataTableAjax.push({"x":dataAjax[i][0],
+          "y":parseInt(dataAjax[i][1])})
+
+}
+chartAjax.data = dataTableAjax;
+chartAjax.draw();
+setTimeout(function(){updatechart()},1000);
+        }
+requestAjax.send();
+};

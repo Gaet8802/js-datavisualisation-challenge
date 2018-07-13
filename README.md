@@ -14,7 +14,7 @@ Réaliser 2 graphiques intéractifs à partir de 2 tableaux HTML, et Régalement
 
 # Quand ?
 
-du 9 JUillet 9h30 au 13 Juillet 2018 16h30.
+du 9 Juillet 9h30 au 13 Juillet 2018 16h30.
 
 # Contraintes
 
@@ -24,4 +24,7 @@ du 9 JUillet 9h30 au 13 Juillet 2018 16h30.
 
 3.   Le choix de la librairie javascript est limité aux 2 librairies proposées (il y en a plein d'autres, mais celles-ci font références et sont très populaires).
 
+# Déploiement
+
+> via github  page [https://gaet8802.github.io/js-datavisualisation-challenge/]
 
